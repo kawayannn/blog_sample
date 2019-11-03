@@ -1,0 +1,17 @@
+.header
+  .header-left
+    .header-left__blog
+      = link_to root_path do
+        Blog
+  .header-rigth
+    %ul.lists
+      %li.lists__list
+        = link_to new_user_session_path do
+          ログイン
+      %li.lists__list
+        = link_to do
+          ログアウト
+      %li.lists__list
+        = link_to do
+          投稿
+
