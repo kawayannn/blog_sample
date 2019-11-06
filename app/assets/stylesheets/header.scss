@@ -12,6 +12,7 @@
     height: 40px;
     width: 80px;
     padding-top: 30px;
+    padding-right: 60px;
     scroll-padding-bottom: 30px;
     &__blog{
       text-align: center;
@@ -19,6 +20,12 @@
       font-size: 30px;
       font-weight: bold;
     }
+  }
+  .header-name{
+    float: left;
+    margin-top: 10px;
+    height: 80px;
+    line-height: 80px;
   }
   .header-rigth{
     float: right;
