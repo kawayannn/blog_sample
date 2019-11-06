@@ -1,0 +1,25 @@
+.content-box
+  .show-content
+    %h4.title
+      = @article.title
+    .user_name
+      投稿者
+      = link_to user_path(@article.user_id) do
+        = @article.user.name
+    .text
+      = simple_format(@article.content)
+  .comments
+    .commennts__message
+    コメント一覧
+    
+    - @comments.each do |comment|
+      .comment
+        .comment__name
+          名前：
+          = comment.user.name
+        .comment__text
+          = comment.text
+    - if user_signed_in?
+      = form_for [@article, @comment] do |f|
+        = f.text_field :text, class: "text-field"
+        = f.submit '送信', class: 'send'
