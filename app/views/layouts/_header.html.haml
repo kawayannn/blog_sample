@@ -4,7 +4,15 @@
       = link_to root_path do
         Blog
   .header-name
-    こんにちは
+    - now = Time.new
+    - ary = now.to_a
+    - if 5 <= ary[2] && 11 >= ary[2]
+      おはようございます
+    - elsif 12 <= ary[2] && 16 >= ary[2]
+      こんにちは
+    - else
+      こんばんは
+      
     - if user_signed_in?
       = link_to "/users/#{current_user.id}" do
         = current_user.name
@@ -18,6 +26,9 @@
           = link_to new_user_session_path do
             ログイン
       -else
+        %li.lists__list
+          = link_to edit_user_path(current_user.id) do
+            プロフィール
         %li.lists__list
           = link_to destroy_user_session_path, method: :delete do
             ログアウト

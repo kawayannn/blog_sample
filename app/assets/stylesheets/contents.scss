@@ -23,6 +23,17 @@
     .user_name{
       margin-top: 20px;
       margin-bottom: 10px;
+      display: flex;
+      height: 25px;
+      line-height: 25px;
+      .user-info{
+        display: flex;
+        margin-left: 8px;
+        &__image{
+          margin-right: 4px;
+          border-radius: 30px;
+        }
+      }
     }
     .text{
       overflow: hidden;

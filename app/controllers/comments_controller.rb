@@ -1,11 +1,20 @@
 class CommentsController < ApplicationController
+  before_action :set_article
   def create 
-    @comment = Comment.create(text: comment_params[:text], article_id: comment_params[:article_id], user_id: current_user.id)
-    redirect_to "/article/#{article.id}"
+    @comment = @article.comments.create(comment_params)
+    redirect_to article_path(@article)
   end
 
   private
+  # def comment_params
+  #   params.require(:comment).permit(:text)
+  # end
+
+  def set_article
+    @article = Article.find(params[:article_id])
+  end
+
   def comment_params
-    params.permit(:text, :article_id)
+    params.require(:comment).permit(:text).merge(user_id: current_user.id)
   end
 end
