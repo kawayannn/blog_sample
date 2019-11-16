@@ -4,8 +4,10 @@
       = article.title
     .user_name
       投稿者：
-      = link_to user_path(article.user_id) do
-        = article.user.name
+      .user-info
+        = image_tag article.user.image, class: "user-info__image"
+        = link_to user_path(article.user_id), class: "user-info__name" do
+          = article.user.name
     .text
       = article.content
     .lists-box

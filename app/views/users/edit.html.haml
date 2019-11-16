@@ -1,0 +1,12 @@
+.change_profile
+  .page_explanation
+    プロフィール編集画面
+  = form_for @user do |f|
+    .name_change
+      名前の変更
+    = f.text_field :name, class: "name_field"
+    .icon_change
+      プロフィールアイコン変更
+    = f.file_field :image, class: "icon_file"
+    = f.submit "プロフィール更新",class: "btn"
+    

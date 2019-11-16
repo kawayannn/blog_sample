@@ -3,23 +3,26 @@
     %h4.title
       = @article.title
     .user_name
-      投稿者
-      = link_to user_path(@article.user_id) do
-        = @article.user.name
+      投稿者：
+      .user-info
+        = image_tag @article.user.image, class: "user-info__image"
+        = link_to user_path(@article.user_id), class: "user-info__name" do
+          = @article.user.name
+
     .text
       = simple_format(@article.content)
   .comments
-    .commennts__message
-    コメント一覧
+    .comments__message
+      コメント一覧
     
     - @comments.each do |comment|
       .comment
         .comment__name
           名前：
           = comment.user.name
-        .comment__text
+        %pre.comment__text
           = comment.text
     - if user_signed_in?
       = form_for [@article, @comment] do |f|
-        = f.text_field :text, class: "text-field"
+        = f.text_area :text, class: "text-field", placeholder: '40文字まで'
         = f.submit '送信', class: 'send'

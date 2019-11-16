@@ -1,19 +1,21 @@
 .contents
   .user_articles
-    - if user_signed_in? && @user.name == current_user.name
+    - if user_signed_in? && @user.id == current_user.id
       あなたの投稿一覧
     - else
       = @user.name
       さんの投稿一覧
       
-  - @user.articles.each do |article|
+  - @user.articles.order(created_at: :DESC).each do |article|
     .content
       %h4.title
         = article.title
       .user_name
         投稿者：
-        = link_to user_path(article.user_id) do
-          = article.user.name
+        .user-info
+          = image_tag article.user.image, class: "user-info__image"
+          = link_to user_path(article.user_id), class: "user-info__name" do
+            = article.user.name
       .text
         = article.content
       .lists-box

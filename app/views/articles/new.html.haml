@@ -1,6 +1,7 @@
-%h2記事投稿画面
 .article_form
+  .article_form__title
+    記事投稿画面
   = form_for @article do |f|
-    = f.text_field :title, class: 'titile-field', placeholder: 'タイトル'
-    = f.text_field :content, class: 'content-field'
-    = f.submit '送信', class: 'send'
+    = f.text_field :title, class: 'title-field', placeholder: 'タイトル 20文字まで'
+    = f.text_area :content, class: 'content-field', placeholder: '本文'
+    = f.submit "送信", class: 'btn'
